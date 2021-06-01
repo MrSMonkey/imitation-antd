@@ -1,13 +1,13 @@
 import React from 'react';
 import { fireEvent, render } from  '@testing-library/react';
-import Button, { ButtonProps, ButtonSize, ButtonType } from './button';
+import Button, { ButtonProps } from './button';
 const defaultProps = {
   onClick: jest.fn()
 };
 
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
-  size: ButtonSize.Large,
+  btnType: 'primary',
+  size: 'lg',
   className: 'test-class',
 };
 
@@ -31,14 +31,14 @@ describe('test Button Component', () => {
     const wrapper = render(<Button {...testProps}>Nice</Button>);
     const element = wrapper.getByText('Nice');
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass(`btn btn-${ButtonSize.Large} btn-${ButtonType.Primary} ${testProps.className}`);
+    expect(element).toHaveClass(`btn btn-lg btn-primary ${testProps.className}`);
   })
   it('should render a link button when btnType equals link and href is provided', () => {
-    const wrapper = render(<Button btnType={ButtonType.Link} href="http://www.baidu.con">Link</Button>);
+    const wrapper = render(<Button btnType="link" href="http://www.baidu.con">Link</Button>);
     const element = wrapper.getByText('Link');
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('A')
-    expect(element).toHaveClass(`btn btn-${ButtonType.Link}`);
+    expect(element).toHaveClass(`btn btn-link`);
   })
   it('should render disabled button when disabled set to true', () => {
     const wrapper = render(<Button {...disabledProps}>Nice</Button>);

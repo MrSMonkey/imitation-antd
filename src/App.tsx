@@ -1,14 +1,21 @@
 import React from 'react';
-// import Button, { ButtonType, ButtonSize } from './components/Button';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
+
+library.add(fas)
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu mode="vertical" onSelect={index => console.log(index)} defaultOpenSubMenus={['2']}>
+        <Menu
+          onSelect={index => console.log(index)}
+          defaultOpenSubMenus={['2']}
+          mode="vertical"
+        >
           <MenuItem>menu 0</MenuItem>
           <MenuItem disabled>menu 1</MenuItem>
           <SubMenu title="dropdown">
